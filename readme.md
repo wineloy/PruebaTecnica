@@ -28,6 +28,7 @@ Prueba realizada por Eloy Garcia Ceja, en este apartado te comento los detalles 
 
  - Esta aplicación no puede generar ventas 
  - Esta aplicación no puede modificar tabla de ventas 
+ - Hay un boton que dice comprar, pero no hace nada mas que mandar una alerta 😞
 ## Agregados 
  - La aplicación esta validada para evitar nulos tanto en el frontend como en el backend 
  - cuenta con algunas animaciones en las alertas de acción 
