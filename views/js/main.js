@@ -1,5 +1,9 @@
 let Json;
 let formRegistro = document.querySelector("#form-registro");
+let buscador = document.querySelector("#buscador");
+let bntmasVendidos  = document.querySelector("#bnt-masVendidos");
+let bntmenosVendidos = document.querySelector("#bnt-menosVendidos");
+let card = document.querySelector("#card");
 
 //Consumo Api al momento de iniciar la app
 document.addEventListener("DOMContentLoaded", getProductos());
@@ -19,11 +23,20 @@ async function getProductos() {
 
 }
 
+async function busquedaProductos() {
+    return await fetch('https://localhost:44335/Productos/busqueda')
+    .then(request => {
+        if (request.ok)
+            return request.json();
+    })
+    .then(data => {
+        PintarTargetas(data);
+    })
+}
+
 async function PintarTargetas(data) {
     Json = await data;
     //console.log(Json);
-    var table = document.querySelector('#cuerpo');
-    let card = document.querySelector("#card")
     card.innerHTML = "";
     //Itero sobre las targetas 
     Json.forEach(element => {
@@ -36,7 +49,7 @@ async function PintarTargetas(data) {
               <p class="card-text">${element.nombreProductoLargo}</p>
               <a class="card-link" onclick="Borrar(${element.idProductos});">Borrar</a>
               <a class="card-link" onclick="Editar(${element.idProductos});">Editar</a>
-              <a class="card-link">Comprar</a>
+              <a class="card-link" onclick="Comprar(${element.idProductos});">Comprar</a>
             </div>
             </div>`
         } else {
@@ -47,7 +60,7 @@ async function PintarTargetas(data) {
               <p class="card-text">${element.nombreProductoLargo}</p>
               <a class="card-link" onclick="Borrar(${element.idProductos});">Borrar</a>
               <a class="card-link" onclick="Editar(${element.idProductos});">Editar</a>
-              <a class="card-link">Comprar</a>
+              <a class="card-link" onclick="Comprar(${element.idProductos});">Comprar</a>
             </div>
             </div>`
         }
@@ -211,5 +224,90 @@ function Editar(id) {
         });
 }
 
+function Comprar(id) {
+    alert("haz comprado");
+}
 
+
+buscador.addEventListener("change", async e => {
+    let busqueda = {"NombreProductoLargo": e.target.value } 
+    fetch('https://localhost:44335/Productos/busqueda',{
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(busqueda)
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        else
+        throw("Error");
+    })
+    .then(data=>{
+        PintarTargetas(data);
+    })
+})
+
+
+bntmasVendidos.addEventListener("click", async e=>{
+    fetch('https://localhost:44335/Ventas')
+    .then(request => {
+        if (request.ok) {
+            return request.json();
+        }else
+        throw("Error en la conexión");
+    })
+    .then(data=>{
+        Filtro("mas", data)
+   })
+});
+
+bntmenosVendidos.addEventListener("click", async e=>{
+    fetch('https://localhost:44335/Ventas')
+    .then(request => {
+        if (request.ok) {
+            return request.json();
+        }else
+        throw("Error en la conexión");
+    })
+    .then(data=>{
+        Filtro("menos", data)
+   })
+})
+
+async function Filtro(criterio, data) {
+    let datos = await data; 
+    card.innerHTML="";
+    if (criterio=="mas") {
+        datos.forEach(element=>{
+            if (Number(element.cantidadVentas) >= 100) {
+                card.innerHTML += `<div class="card my-2 my-md-2" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">${element.nombre}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">$ ${Number(element.precio)} MXN</h6>
+                  <p class="card-text">${element.nombreLargo}</p>
+                  <p class="card-text">${element.fecha}</p>
+                </div>
+                </div>`
+            }
+        })
+    }else{
+        datos.forEach(element=> {
+            if (Number(element.cantidadVentas) < 100) {
+                card.innerHTML += `<div class="card my-2 my-md-2" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">${element.nombre}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">$ ${Number(element.precio)} MXN</h6>
+                  <p class="card-text">${element.nombreLargo}</p>
+                  <p class="card-text">${element.fecha}</p>
+                </div>
+                </div>`
+            }
+        });
+    }
+    
+}
 

@@ -41,6 +41,27 @@ namespace Backend_Productos.Controllers
 
         }
 
+        [Route("busqueda")]
+        [HttpPost]
+        public IActionResult busqueda([FromBody] models.request.Busquedas modelo)
+        {
+            using (ProductosContext db = new ProductosContext())
+            {
+                var busqueda = (from prod in db.Productos
+                                      select prod)
+                                     .Where(s => s.NombreProducto.Contains(modelo.NombreProductoLargo.ToUpper())) 
+                                     .ToList();
+                if (busqueda== null)
+                {
+                    Index();
+                }
+
+                return Ok(busqueda);
+            }
+
+        }
+
+
         [Route("create")]
         [HttpPost()]
         public IActionResult create([FromBody] models.request.ProductosCreate modelo)
@@ -51,8 +72,8 @@ namespace Backend_Productos.Controllers
                 using (ProductosContext db = new ProductosContext())
                 {
                     Producto oProducto = new Producto();
-                    oProducto.NombreProducto = modelo.NombreProducto;
-                    oProducto.NombreProductoLargo = modelo.NombreProductoLargo;
+                    oProducto.NombreProducto = modelo.NombreProducto.ToUpper();
+                    oProducto.NombreProductoLargo = modelo.NombreProductoLargo.ToUpper();
                     oProducto.Precio =modelo.Precio;
                     oProducto.CantidadExistencia = modelo.Cantidad;
 
@@ -74,8 +95,8 @@ namespace Backend_Productos.Controllers
                 try
                 {
                     var oProducto = db.Productos.Find(modelo.IdProducto);
-                    oProducto.NombreProducto = modelo.NombreProducto;
-                    oProducto.NombreProductoLargo = modelo.NombreProductoLargo;
+                    oProducto.NombreProducto = modelo.NombreProducto.ToUpper();
+                    oProducto.NombreProductoLargo = modelo.NombreProductoLargo.ToUpper();
                     oProducto.Precio = modelo.Precio;
                     oProducto.CantidadExistencia = modelo.Cantidad;
                     db.Entry(oProducto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
