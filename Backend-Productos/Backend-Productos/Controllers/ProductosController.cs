@@ -41,8 +41,6 @@ namespace Backend_Productos.Controllers
 
         }
 
-
-
         [Route("create")]
         [HttpPost()]
         public IActionResult create([FromBody] models.request.ProductosCreate modelo)
@@ -68,7 +66,7 @@ namespace Backend_Productos.Controllers
 
         [Route("edit")]
         [HttpPut()]
-        public IActionResult Update([FromBody] models.request.ProductosEdit modelo)
+        public async Task<IActionResult> Update([FromBody] models.request.ProductosEdit modelo)
         {
             using (ProductosContext db = new ProductosContext())
             {
@@ -81,7 +79,7 @@ namespace Backend_Productos.Controllers
                     oProducto.Precio = modelo.Precio;
                     oProducto.CantidadExistencia = modelo.Cantidad;
                     db.Entry(oProducto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    db.SaveChanges();
+                    db.SaveChangesAsync();
                     return Ok();
                 }
                 catch(Exception e)

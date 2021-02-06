@@ -1,16 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    
+    <link rel="stylesheet" href="styles/custom.css">
     <title>Prueba tecnica | Residencias Profesionales</title>
 </head>
-<body>
-    <h1>hola</h1>
-    
 
+<body>
+    <div class="container-fluid bg-danger d-flex justify-content-lg-between  ">
+
+        <div class="container ">
+            <div class="row ">
+            <h1 class="col-12 col-md-4 h2  text-white text-center"><a class="text-white enlace" target="_blank" href="https://www.linkedin.com/in/wineloy"> Linkedin </a></h1>
+            <h1 class="col-12  col-md-4 h2 text-white text-center">CRUD Productos</h1>
+            <h1 class="col-12  col-md-4 h2 text-center"><a class="text-white enlace" target="_blank" href="https://github.com/wineloy"> GitHub </a></h1>
+            </div>
+        </div>
+
+    </div>
+    <!--Registro de Productos Formulario-->
+    <div class="container bg-light my-3">
+        <div class="row d-flex justify-content-center">
+            <h3>Registra Productos</h3>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <form class="container px-2 py-md-0" method="POST" id="form-registro">
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                        <label for="nombre">Nombre Producto</label>
+                        <input id="NombreProducto" type="text" class="form-control" name="NombreProducto" required>
+                    </div>
+                    <div class="form-group  col-sm-12 col-md-6 col-lg-3">
+                        <label for="nombre Largo">Nombre Producto Largo</label>
+                        <input id="NombreProductoLargo" type="text" class="form-control" name="NombreProductoLargo"
+                            required>
+                    </div>
+                    <div class="form-group  col-sm-12 col-md-6 col-lg-3">
+                        <label for="nombre Largo">Precio</label>
+                        <input id="Precio" type="text" class="form-control" name="Precio" required>
+                    </div>
+                    <div class="form-group  col-sm-12 col-md-6 col-lg-3">
+                        <label for="nombre Largo">Cantidad Productos</label>
+                        <input id="Cantidad" type="text" class="form-control" name="Cantidad" required>
+                    </div>
+                </div>
+                <div class="form-row d-flex justify-content-center">
+                    <div class="form-group  col-sm-12 col-md-6 col-lg-3">
+                        <input id="bnt-Registrar" type="submit" class="btn btn-success size" value="Registrar" required>
+                    </div>
+
+                    <div class="form-group  col-sm-12 col-md-6 col-lg-3">
+                        <input id="bnt-Save" type="submit" class="btn btn-primary size" value="Cambiar Valor" required>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Registro de Targetas dinamico with js-->
+    <div class="container-fluid">
+        <div class="container my-3 ">
+            <div class="row d-flex justify-content-center">
+                <h2>Catalogo Productos</h2>
+            </div>
+
+            <div id="card" class="row d-flex justify-content-center justify-content-md-between">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Scripts Boostrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
+
 </html>
