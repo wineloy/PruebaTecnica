@@ -24,6 +24,23 @@ Prueba realizada por Eloy Garcia Ceja, en este apartado te comento los detalles 
  - La aplicación cuenta con un CRUD completo para la gestion de productos 
  - La aplicación permite filtrar los mas vendidos y menos vendidos  
 
+ ## End Points
+Esta API hace uso de los métodos HTTP para realizar determinadas acciones a continuación se en listan:
+En esta API se encuentran las siguientes rutas:
+
+    www.yourdomain/Productos -> GET {Muestra Productos}
+    www.yourdomain/create -> POST {Registro de Productos}
+    www.yourdomain/edit -> PUT {Edición de Productos}
+    www.yourdomain/delete -> DELETE {Eliminación de Productos}
+    www.yourdomain/produc -> POST {Búsqueda de productos por ID }
+    www.yourdomain/busquedas -> POST {Búsquedas por nombres }
+    www.yourdomain/Ventas -> GET {Muestra las ventas de productos}
+    
+ - GET: Para consultas de información y en donde no sea necesario enviar algún parámetro en la solicitud.
+ - POST: Para todas aquellas inserciones que estén enfocadas principalmente en la creación de registros
+ - PUT: Para acciones de modificación 
+ - DELETE: Como su nombre lo indica es para eliminación de registros 
+
 ## Limitaciones 
 
  - Esta aplicación no puede generar ventas 
