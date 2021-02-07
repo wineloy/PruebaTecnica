@@ -1,7 +1,10 @@
 # Prueba Técnica Residencias
 
-Prueba realizada por Eloy Garcia Ceja, en este apartado te comento los detalles de esta solución 
-![enter image description here](https://github.com/wineloy/PruebaTecnica/blob/main/views/img/foto%20home.png?raw=true)
+Prueba realizada por Eloy Garcia Ceja, en este apartado te comento los detalles de esta solución
+
+## Diagrama General Solución
+![Diagrama General Proyecto](https://github.com/wineloy/PruebaTecnica/blob/main/views/img/diagrama.png?raw=true)
+
 ## Tecnologías empleadas
  - Framework NET 5.0
  - SQL SERVER EXPRESS EDITION 
@@ -26,7 +29,6 @@ Prueba realizada por Eloy Garcia Ceja, en este apartado te comento los detalles 
 
  ## End Points
 Esta API hace uso de los métodos HTTP para realizar determinadas acciones a continuación se en listan:
-En esta API se encuentran las siguientes rutas:
 
     www.yourdomain/Productos -> GET {Muestra Productos}
     www.yourdomain/create -> POST {Registro de Productos}
@@ -35,7 +37,7 @@ En esta API se encuentran las siguientes rutas:
     www.yourdomain/produc -> POST {Búsqueda de productos por ID }
     www.yourdomain/busquedas -> POST {Búsquedas por nombres }
     www.yourdomain/Ventas -> GET {Muestra las ventas de productos}
-    
+
  - GET: Para consultas de información y en donde no sea necesario enviar algún parámetro en la solicitud.
  - POST: Para todas aquellas inserciones que estén enfocadas principalmente en la creación de registros
  - PUT: Para acciones de modificación 
@@ -51,7 +53,13 @@ En esta API se encuentran las siguientes rutas:
  - La aplicación esta validada para evitar nulos tanto en el frontend como en el backend 
  - cuenta con algunas animaciones en las alertas de acción 
 
+## Vistas de aplicación
+
+![Home App](https://github.com/wineloy/PruebaTecnica/blob/main/views/img/foto%20home.png?raw=true)
+
 ![Logo](https://github.com/wineloy/PruebaTecnica/blob/main/views/img/foto%20registro.png?raw=true)
+
+
 
  
  
