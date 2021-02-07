@@ -22,6 +22,7 @@ Prueba realizada por Eloy Garcia Ceja, en este apartado te comento los detalles 
      Backend-Productos: Proyecto WebAPI Net 5.0
      views: documentos HTML, CSS y JS
      Database Script: El script de la base de datos (Perdon por lo sencillo 😅)
+     
   ## Operaciones 
 
  - La aplicación cuenta con un CRUD completo para la gestion de productos 
@@ -48,7 +49,9 @@ Esta API hace uso de los métodos HTTP para realizar determinadas acciones a con
  - Esta aplicación no puede generar ventas 
  - Esta aplicación no puede modificar tabla de ventas 
  - Hay un boton que dice comprar, pero no hace nada mas que mandar una alerta 😞
- - quedo pendiente sobre las existencias (aunque si tiene curiosidad si edita uno y lo pone en cero la tarjeta cambia y se agrega mensaje agotado) y sobre los intervalos
+ - Quedo pendiente sobre las existencias (aunque si tiene curiosidad si edita uno y lo pone en cero la tarjeta cambia y se agrega mensaje agotado) y sobre los intervalos
+ - Internet Explorer no esta soportado (No soporta API FETCH)
+
 ## Agregados 
  - La aplicación esta validada para evitar nulos tanto en el frontend como en el backend 
  - cuenta con algunas animaciones en las alertas de acción 
