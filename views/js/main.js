@@ -210,7 +210,6 @@ function Editar(id) {
             })
                 .then(request => {
                     if (request.ok) {
-                        getProductos();
                         Swal.fire(
                             'Producto Registrado',
                             'Realiza un pequeño Scroll para ver el producto',
@@ -223,6 +222,7 @@ function Editar(id) {
                 })
                 .then(response => console.log(response))
                 .catch(error => console.log(error));
+                getProductos();
         
             formRegistro.reset();
         });
