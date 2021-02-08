@@ -1,3 +1,7 @@
+//Configuración modifique el valor en caso de cambiar el server 
+const URL = "https://localhost:44335/";
+//
+
 let Json;
 let formRegistro = document.querySelector("#form-registro");
 let buscador = document.querySelector("#buscador");
@@ -11,7 +15,7 @@ document.addEventListener("DOMContentLoaded", getProductos());
 async function getProductos() {
 
     setTimeout(async () => {
-        return await fetch('https://localhost:44335/Productos')
+        return await fetch(URL+'Productos')
             .then(request => {
                 if (request.ok)
                     return request.json();
@@ -24,7 +28,7 @@ async function getProductos() {
 }
 
 async function busquedaProductos() {
-    return await fetch('https://localhost:44335/Productos/busqueda')
+    return await fetch(URL+'Productos/busqueda')
     .then(request => {
         if (request.ok)
             return request.json();
@@ -80,7 +84,7 @@ formRegistro.addEventListener("submit", e => {
         "Cantidad": Number(datosformulario.get('Cantidad'))
     }
     //Creo es no es lo mas limpio :D
-    fetch("https://localhost:44335/productos/create", {
+    fetch(URL+"productos/create", {
 
         method: "POST",
         headers: {
@@ -123,7 +127,7 @@ function Borrar(id) {
         cancelButtonText: 'NO',
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch("https://localhost:44335/productos/delete", {
+            fetch(URL+"productos/delete", {
                 method: "DELETE",
                 headers: {
                     'Accept': 'application/json',
@@ -158,7 +162,7 @@ function Editar(id) {
     var data = { "idProducto": Number(id) }
 
     //Creo es no es lo mas limpio :D
-    fetch("https://localhost:44335/Productos/product", {
+    fetch(URL+"Productos/product", {
 
         method: "POST",
         headers: {
@@ -194,8 +198,8 @@ function Editar(id) {
                 "Precio": Number(Precio.value),
                 "Cantidad": Number(Cantidad.value)
             }
-            //Creo es no es lo mas limpio :D
-            fetch("https://localhost:44335/productos/edit", {
+       
+            fetch(URL+"productos/edit", {
         
                 method: "PUT",
                 headers: {
@@ -231,7 +235,7 @@ function Comprar(id) {
 
 buscador.addEventListener("change", async e => {
     let busqueda = {"NombreProductoLargo": e.target.value } 
-    fetch('https://localhost:44335/Productos/busqueda',{
+    fetch(URL+'Productos/busqueda',{
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -253,7 +257,7 @@ buscador.addEventListener("change", async e => {
 
 
 bntmasVendidos.addEventListener("click", async e=>{
-    fetch('https://localhost:44335/Ventas')
+    fetch(URL+'Ventas')
     .then(request => {
         if (request.ok) {
             return request.json();
@@ -266,7 +270,7 @@ bntmasVendidos.addEventListener("click", async e=>{
 });
 
 bntmenosVendidos.addEventListener("click", async e=>{
-    fetch('https://localhost:44335/Ventas')
+    fetch(URL+'Ventas')
     .then(request => {
         if (request.ok) {
             return request.json();
